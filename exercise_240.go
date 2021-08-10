@@ -8,12 +8,11 @@ func searchMatrix2(matrix [][]int, target int) bool {
 
 	mCur := 0
 
-	// Iterate over the until a match is found or the current row's final value
-	// is less than the target value.
+	// Iterate over the until a match is found or we run out of rows.
 	for !rtnFound && mCur < mMax {
-		// Extra bit of optimisation, skip the current row if the target value
-		// is less than the first row's value.
+		// Only examine a row if the target value falls within the range of elements.
 		if matrix[mCur][0] <= target && target <= matrix[mCur][nMax] {
+			// See if we find a match at either end, otherwise do a binary search.
 			rtnFound = (matrix[mCur][0] == target || target == matrix[mCur][nMax])
 
 			if !rtnFound {
