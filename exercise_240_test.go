@@ -30,14 +30,26 @@ func Test_240_searchMatrix2(t *testing.T) {
 			{3, 6, 9, 16, 22},
 			{10, 13, 14, 17, 24},
 			{18, 21, 23, 26, 30}}, 20, false},
+
+		{[][]int{
+			{-5}}, -5, true},
+
+		{[][]int{
+			{5},
+			{6}}, 6, true},
+
+		{[][]int{
+			{1, 4},
+			{2, 5}}, 5, true},
 	}
 
-	for _, testCase := range testCases {
+	for i, testCase := range testCases {
 		result := searchMatrix2(testCase.matrix, testCase.target)
 
 		if result != testCase.expected {
 			t.Errorf(
-				"Search failed: expected %v but got %v",
+				"Test Case %v Failed: expected %v but got %v",
+				i+1,
 				testCase.expected,
 				result)
 		}
